@@ -25,7 +25,7 @@ public class BuildYourOwn extends Pizza{
 	
 	@Override
 	public String toString() {
-		return "";
+		return "Build your own" + super.toString();
 	}
 	
 }

@@ -22,7 +22,7 @@ public class Hawaiian extends Pizza{
 	
 	@Override
 	public String toString() {
-		return "";
+		return "Hawaiian" + super.toString();
 	}
 
 }

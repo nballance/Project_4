@@ -22,7 +22,7 @@ public class Deluxe extends Pizza {
 	
 	@Override
 	public String toString() {
-		return "";
+		return "Deluxe" + super.toString();
 	}
 
 }
