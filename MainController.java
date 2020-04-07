@@ -1,6 +1,7 @@
 package application;
 
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -18,6 +19,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -89,6 +91,24 @@ public class MainController {
 		//Configure toppingsSelected ListView
 		selectedToppings.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		
+		displayImage();
+		
+	}
+	
+	public void displayImage() {
+		File file;
+		if(pizzaType.getValue().equals("Build your own")) {
+			 file = new File("Resource_Images/Build_your_own.png");	
+		}else if(pizzaType.getValue().equals("Deluxe")) {
+			 file = new File("Resource_Images/Deluxe.png");	
+		}else {
+			//This will be Hawaiian
+			 file = new File("Resource_Images/Hawaiian.png");
+		}
+		
+		Image image = new Image(file.toURI().toString());
+		//Image img = new Image(getClass().getResourceAsStream("Resource_Images/Build_your_own.png"));
+		images.setImage(image);
 	}
 	
 	/**
@@ -98,10 +118,11 @@ public class MainController {
 	public void pizzaTypeChangeAction() {
 		//case 1: Build your own
 		if(pizzaType.getValue().toString().equals("Build your own")) {
-			//do nothing
+			displayImage();
 		}
 		//case 2: Deluxe
 		else if(pizzaType.getValue().toString().equals("Deluxe")) {
+			displayImage();
 			selectedToppings.getItems().clear();
 			selectedToppings.getItems().add("Sausage");
 			selectedToppings.getItems().add("Pepperoni");
@@ -111,6 +132,7 @@ public class MainController {
 		}
 		//case 3: Hawaiian
 		else if(pizzaType.getValue().toString().equals("Hawaiian")) {
+			displayImage();
 			selectedToppings.getItems().clear();
 			selectedToppings.getItems().add("Ham"); 
 			selectedToppings.getItems().add("Pineapple"); 
@@ -145,12 +167,18 @@ public class MainController {
 	 * @return true if the pizza is valid
 	 */
 	public boolean validPizzaSelection() {
-		if(pizzaType.getValue().contentEquals("--")) {
-			return false;
+		if(pizzaType.getValue().contentEquals("Build your own")) {
+			if(selectedToppings.getItems().size() < 1) {
+				return false;
+			}
 		}
-		if(size.getValue().contentEquals("--")) {
-			return false;
-		}
+		
+//		if(pizzaType.getValue().contentEquals("--")) {
+//			return false;
+//		}
+//		if(size.getValue().contentEquals("--")) {
+//			return false;
+//		}
 		return true;
 	}
 	
@@ -206,7 +234,7 @@ public class MainController {
 			myOrder.add(myPizza);
 			resetData();
 		}else {
-			result.setText("Invalid pizza type/size");			
+			result.setText("Need to select at least 1 topping for Build your own.");			
 		}
 	}
 	

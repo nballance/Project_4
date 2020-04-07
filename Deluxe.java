@@ -3,7 +3,10 @@ package application;
 import java.util.ArrayList;
 
 public class Deluxe extends Pizza {
-
+	final int PRICE_SMALL = 14;
+	final int PRICE_MEDIUM = 16;
+	final int PRICE_LARGE = 18;
+	
 	public Deluxe(String style, String size, ArrayList<String> toppings) {
 		super(style, size, toppings);
 		// TODO Auto-generated constructor stub
@@ -16,8 +19,15 @@ public class Deluxe extends Pizza {
 
 	@Override
 	public int pizzaPrice() {
-		// TODO Auto-generated method stub
-		return 0;
+		if(this.size.equals("Small")) {
+			return PRICE_SMALL;
+		}else if(this.size.equals("Medium")) {
+			return PRICE_MEDIUM;
+		}else if(this.size.equals("Large")) {
+			return PRICE_LARGE;
+		}
+		//Error otherwise
+		return -1;
 	}
 	
 	@Override

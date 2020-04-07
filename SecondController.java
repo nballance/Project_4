@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 public class SecondController {
@@ -18,9 +19,12 @@ public class SecondController {
 	@FXML private Button placeOrder;
 	@FXML private Button clearOrder;
 
+	@FXML private TextArea textTotal;
 	@FXML private ListView<String> orderedPizza;
+	
 	ObservableList<Pizza> pizzaList;
 	boolean isCleared = false;
+	int total = 0;
 	
 	public void changeSceneCheckoutButton(ActionEvent event) throws IOException {
 		//Parent checkoutParent = FXMLLoader.load(getClass().getResource("Main.fxml"));
@@ -54,7 +58,10 @@ public class SecondController {
 		for(Pizza s : order) {
 			System.out.println("We added " + s.toString());
 			orderedPizza.getItems().add(s.toString());
+			total += s.pizzaPrice();
 		}
+		
+		textTotal.setText("Total: $" + total);
 	}
 	
 	ObservableList<Pizza> getPizzaList(){
@@ -68,6 +75,8 @@ public class SecondController {
 	
 	public void clearOrderButton(ActionEvent event) {
 		orderedPizza.getItems().clear();
+		textTotal.clear();
+		textTotal.setText("Total: $0");
 		isCleared = true;
 	}
 }
