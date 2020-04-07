@@ -49,7 +49,8 @@ public class BuildYourOwn extends Pizza{
 	
 	@Override
 	public String toString() {
-		return "Build your own" + super.toString();
+		return super.toString();
+		//+ "costs $" + pizzaPrice();
 	}
 	
 }

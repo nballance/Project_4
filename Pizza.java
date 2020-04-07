@@ -21,6 +21,6 @@ public abstract class Pizza {
 	public abstract int pizzaPrice();
 	
 	public String toString() { 
-		return style + size + toppings.toString();
+		return size + " " + style + " with " + toppings.toString();
 	}
 }

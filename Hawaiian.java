@@ -32,7 +32,8 @@ public class Hawaiian extends Pizza{
 	
 	@Override
 	public String toString() {
-		return "Hawaiian" + super.toString();
+		return super.toString();
+		//+ "costs $" + pizzaPrice();
 	}
 
 }

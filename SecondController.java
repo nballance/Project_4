@@ -21,6 +21,7 @@ public class SecondController {
 
 	@FXML private TextArea textTotal;
 	@FXML private ListView<String> orderedPizza;
+	@FXML private ListView<String> pizzaPrices;
 	
 	ObservableList<Pizza> pizzaList;
 	boolean isCleared = false;
@@ -58,6 +59,7 @@ public class SecondController {
 		for(Pizza s : order) {
 			System.out.println("We added " + s.toString());
 			orderedPizza.getItems().add(s.toString());
+			pizzaPrices.getItems().add("$" + s.pizzaPrice());
 			total += s.pizzaPrice();
 		}
 		
@@ -75,6 +77,7 @@ public class SecondController {
 	
 	public void clearOrderButton(ActionEvent event) {
 		orderedPizza.getItems().clear();
+		pizzaPrices.getItems().clear();
 		textTotal.clear();
 		textTotal.setText("Total: $0");
 		isCleared = true;
