@@ -47,17 +47,18 @@ public class SecondController {
 	}
 	
 	public void initData(ObservableList<Pizza> order){
+		placeOrder.setDisable(false);
+
 		pizzaList = order;
-		System.out.println("did we get here");
 		if(order == null) {
-			System.out.println("option 1");
-			System.out.println("Buy some pizza before you checkout.");
 			return;
 		}
-		System.out.println("option 2");
+		
+		if(order.size() == 0) {
+			placeOrder.setDisable(true);
+		}
 		
 		for(Pizza s : order) {
-			System.out.println("We added " + s.toString());
 			orderedPizza.getItems().add(s.toString());
 			pizzaPrices.getItems().add("$" + s.pizzaPrice());
 			total += s.pizzaPrice();
@@ -81,5 +82,10 @@ public class SecondController {
 		textTotal.clear();
 		textTotal.setText("Total: $0");
 		isCleared = true;
+		placeOrder.setDisable(true);
+	}
+	
+	public void placeOrderButton(ActionEvent event) {
+		System.exit(0);
 	}
 }

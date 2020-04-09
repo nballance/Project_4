@@ -17,7 +17,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
-import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -39,9 +38,7 @@ public class MainController {
 	@FXML private ListView<String> selectedToppings;
 	
 	@FXML private ImageView images;
-	
-	@FXML private Slider music;
-	
+		
 	public ObservableList<Pizza> myOrder;
 	final int MAX_TOPPINGS = 6;
 	final int DELUXE_TOPPINGS = 5;
@@ -72,6 +69,7 @@ public class MainController {
 		);
 		
 		pizzaType.getSelectionModel().selectFirst();
+		
 		pizzaType.getSelectionModel().selectedItemProperty().addListener( (Observable, oldValue, newValue) -> 
 				pizzaTypeChangeAction()
 				);
@@ -89,7 +87,7 @@ public class MainController {
 		chooseToppings.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 		
 		//Configure toppingsSelected ListView
-		selectedToppings.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		selectedToppings.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 		
 		displayImage();
 		
@@ -118,10 +116,21 @@ public class MainController {
 	public void pizzaTypeChangeAction() {
 		//case 1: Build your own
 		if(pizzaType.getValue().toString().equals("Build your own")) {
+			addToppings.setDisable(false);
+			removeToppings.setDisable(false);
+			clearSelection.setDisable(false);
+			
 			displayImage();
+			selectedToppings.getItems().clear();
 		}
 		//case 2: Deluxe
 		else if(pizzaType.getValue().toString().equals("Deluxe")) {
+
+			
+			addToppings.setDisable(true);
+			removeToppings.setDisable(true);
+			clearSelection.setDisable(true);
+			
 			displayImage();
 			selectedToppings.getItems().clear();
 			selectedToppings.getItems().add("Sausage");
@@ -132,6 +141,10 @@ public class MainController {
 		}
 		//case 3: Hawaiian
 		else if(pizzaType.getValue().toString().equals("Hawaiian")) {
+			addToppings.setDisable(true);
+			removeToppings.setDisable(true);
+			clearSelection.setDisable(true);
+			
 			displayImage();
 			selectedToppings.getItems().clear();
 			selectedToppings.getItems().add("Ham"); 
@@ -244,10 +257,11 @@ public class MainController {
 	 * @param event, Add Toppings button is selected
 	 */
 	public void addToppingsButton(ActionEvent event) {
-
-		result.setText("Add Toppings Button clicked.");
 		ObservableList<String> selected = chooseToppings.getSelectionModel().getSelectedItems();
-
+		if(selected.size() == 0) {
+			result.setText("Please select topping(s) to add");
+		}
+		
         for(String s : selected){
         	if(selectedToppings.getItems().size() < MAX_TOPPINGS) {
         		if(!selectedToppings.getItems().contains(s)) {
@@ -270,9 +284,10 @@ public class MainController {
 	 * @param event, Remove Toppings button is selected
 	 */
 	public void removeToppingsButton(ActionEvent event) {
-		result.setText("Remove Toppings Button clicked.");
 		ObservableList<String> selected = selectedToppings.getSelectionModel().getSelectedItems();
-		
+		if(selected.size() == 0) {
+			result.setText("Please select topping(s) to remove");
+		}
 		
 		//TODO removing multiple on selection only removes half for some reason.
         for(String s : selected){
@@ -286,7 +301,6 @@ public class MainController {
 	 * @param event, Clear Selection button is selected
 	 */
 	public void clearSelectionButton(ActionEvent event) {
-		result.setText("Clear Toppings Button clicked.");
 		selectedToppings.getItems().clear();
 	}
 	
@@ -296,12 +310,9 @@ public class MainController {
 	 * @param order pizza list from SecondController
 	 */
 	public void initData(ObservableList<Pizza> order){
-		System.out.println("initData for MainController.");
 		if(order == null) {
-			System.out.println("No pizzas selected.");
 			return;
 		}
-		System.out.println("option 2 initData");
 		myOrder = order;
 //		for(Pizza s : order) {
 //			myOrder = order;
