@@ -1,17 +1,22 @@
 package application;
 
-import static org.junit.jupiter.api.Assertions.*;
+/**
+ * A JUnit test class for the PizzaPrice method in BuildYourOwn
+ * 
+ * @author Nathan Ballance, Weihong Chen
+ */
+
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-class BuildYourOwnTest {
+public class BuildYourOwnTest {
 
 	@Test
-	void testPizzaPrice() {
-		
-        //Small Build Your Own
+	public void testPizzaPrice() {
+		 //Small Build Your Own
         ArrayList<String> toppings = new ArrayList<String>();
         toppings.add("Cheese");
         BuildYourOwn b0 = new BuildYourOwn("Build Your Own", "Small", toppings);
@@ -75,7 +80,6 @@ class BuildYourOwnTest {
         toppings3.add("Mushroom");
         assertEquals(b2.pizzaPrice(), 21);
         
-        //fail("Not yet implemented");
 	}
 
 }
