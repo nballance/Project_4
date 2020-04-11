@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="520.0" prefWidth="695.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SecondController">
+<AnchorPane prefHeight="520.0" prefWidth="695.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SecondController">
    <children>
       <Pane layoutX="-1.0" prefHeight="216.0" prefWidth="695.0">
          <children>
@@ -39,6 +39,7 @@
                   <Font size="24.0" />
                </font>
             </TextArea>
+            <Button fx:id="removeSelectedPizza" layoutX="103.0" layoutY="6.0" mnemonicParsing="false" onAction="#removeSelectedPizzaButton" prefHeight="50.0" prefWidth="174.0" text="Remove Selected PIzza" />
          </children>
       </Pane>
    </children>

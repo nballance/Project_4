@@ -13,16 +13,32 @@ public class BuildYourOwn extends Pizza{
 	final int PRICE_MEDIUM = 7;
 	final int PRICE_LARGE = 9;
 	
+	/**
+	 * Constructs a Build Your Own Pizza
+	 * 
+	 * @param style, the pizza style as "Build Your Own" 
+	 * @param size, the size of the pizza as "Small" "Medium" or "Large"
+	 * @param toppings, the list of toppings added to the pizza 
+	 */
 	public BuildYourOwn(String style, String size, ArrayList<String> toppings) {
 		super(style, size, toppings);
-		// TODO Auto-generated constructor stub
 	}
 	
+	/**
+	 * Constructs a Build Your Own Pizza
+	 * 
+	 * @param style, the pizza style as "Build Your Own" 
+	 * @param size, the size of the pizza as "Small" "Medium" or "Large"
+	 */
 	public BuildYourOwn(String style, String size) {
 		super(style, size);
-		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * Gets the price of this pizza
+	 * 
+	 * @return int, the price of the pizza
+	 */
 	@Override
 	public int pizzaPrice() {
 		int total;
@@ -47,10 +63,12 @@ public class BuildYourOwn extends Pizza{
 		return -1;
 	}
 	
+    /**
+     * {@inheritDoc}
+     */
 	@Override
 	public String toString() {
 		return super.toString();
-		//+ "costs $" + pizzaPrice();
 	}
 	
 }

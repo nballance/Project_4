@@ -7,16 +7,32 @@ public class Deluxe extends Pizza {
 	final int PRICE_MEDIUM = 16;
 	final int PRICE_LARGE = 18;
 	
+	/**
+	 * Constructs a Deluxe Pizza
+	 * 
+	 * @param style, the pizza style as "Deluxe" 
+	 * @param size, the size of the pizza as "Small" "Medium" or "Large"
+	 * @param toppings, the list of toppings added to the pizza 
+	 */
 	public Deluxe(String style, String size, ArrayList<String> toppings) {
 		super(style, size, toppings);
-		// TODO Auto-generated constructor stub
 	}
 	
+	/**
+	 * Constructs a Deluxe Pizza
+	 * 
+	 * @param style, the pizza style as "Deluxe" 
+	 * @param size, the size of the pizza as "Small" "Medium" or "Large"
+	 */
 	public Deluxe(String style, String size) {
 		super(style, size);
-		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * Gets the price of this pizza
+	 * 
+	 * @return int, the price of the pizza
+	 */
 	@Override
 	public int pizzaPrice() {
 		if(this.size.equals("Small")) {
@@ -30,10 +46,12 @@ public class Deluxe extends Pizza {
 		return -1;
 	}
 	
+    /**
+     * {@inheritDoc}
+     */
 	@Override
 	public String toString() {
 		return super.toString();
-		//+ "costs $" + pizzaPrice();
 	}
 
 }

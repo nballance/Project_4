@@ -4,7 +4,7 @@ package application;
  * Class to run the JavaFX application
  * 
  * @author Nathan Ballance, Weihong Chen
- */	
+ */
 
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -21,15 +21,13 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Pizza Builder");
 			primaryStage.show();
-			
-			
-			
-		} catch(Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void main(String[] args) {
-        launch(args);
+		launch(args);
 	}
 }
